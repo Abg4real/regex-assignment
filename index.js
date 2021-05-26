@@ -26,7 +26,7 @@ fs.readFile('./sample-example.html',(err,data)=>{
     let rows = reducedValues.match(/<tr>(.|\n)*?<\/tr>/g);
     // console.log(rows[0]);
     rows.forEach((row)=>{
-        let rowValues = row.match(/<td class="filterable-cell( completed)?">(.|\n)*?<\/td>/g).map((td)=>{
+        let rowValues = row.match(/<td class="filterable-cell( completed| available)?">(.|\n)*?<\/td>/g).map((td)=>{
             newValue = td.replace(/\n/g,"").replace(/<\/?td>/g,"").replace(/,/g,'');
             if(newValue[0]=='<'){
                 const tag = parse(newValue);
