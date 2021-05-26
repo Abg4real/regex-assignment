@@ -27,7 +27,7 @@ fs.readFile('./sample-example.html',(err,data)=>{
     // console.log(rows[0]);
     rows.forEach((row)=>{
         let rowValues = row.match(/<td class="filterable-cell( completed)?">(.|\n)*?<\/td>/g).map((td)=>{
-            newValue = td.replace(/\n/g,"").replace(/<\/?td>/g,"");
+            newValue = td.replace(/\n/g,"").replace(/<\/?td>/g,"").replace(/,/g,'');
             if(newValue[0]=='<'){
                 const tag = parse(newValue);
                 return tag.firstChild.innerText;
